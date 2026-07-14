@@ -1,0 +1,19 @@
+{
+  "name": "sucharypl",
+  "version": "0.1.0",
+  "description": "Oficjalna biblioteka kliencka JavaScript/TypeScript dla SucharyAPI",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "bun build ./index.ts --outdir ./dist --target node && tsc --emitDeclarationOnly --outDir ./dist"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5"
+  }
+}
