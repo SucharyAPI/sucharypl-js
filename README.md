@@ -1,8 +1,8 @@
-# SucharyPL - oficjalna biblioteka bazy SucharyAPI
+# SucharyJS - oficjalna biblioteka bazy SucharyAPI
 Biblioteka JavaScript do pobierania kawałów z ogólnopolskiej bazy SucharyAPI
 
 [![Node Version](https://img.shields.io/badge/node-16%2B-green)](https://nodejs.org/)
-[![npm](https://img.shields.io/npm/v/sucharypl)](https://www.npmjs.com/package/sucharypl)
+[![npm](https://img.shields.io/npm/v/sucharyjs)](https://www.npmjs.com/package/sucharyjs)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 ---
@@ -10,12 +10,12 @@ Biblioteka JavaScript do pobierania kawałów z ogólnopolskiej bazy SucharyAPI
 ## 🚀 Instalacja
 ### Za pomocą npm
 ```bash
-npm install sucharypl
+npm install sucharyjs
 ```
 
 ### Za pomocą bun
 ```bash
-bun add sucharypl
+bun add sucharyjs
 ```
 
 ---
@@ -23,7 +23,7 @@ bun add sucharypl
 ## ⚡ Szybki start
 ### Pobranie losowego suchara
 ```javascript
-import { dajKawal } from 'sucharypl';
+import { dajKawal } from 'sucharyjs';
 
 // Pobierz losowy suchar z dowolnej kategorii
 const suchar = await dajKawal();
@@ -32,7 +32,7 @@ console.log(suchar);
 
 ### Pobranie suchara z konkretnej kategorii
 ```javascript
-import { dajKawal } from 'sucharypl';
+import { dajKawal } from 'sucharyjs';
 
 // Pobierz suchar z kategorii "programowanie"
 const suchar = await dajKawal({ kategoria: "programowanie" });

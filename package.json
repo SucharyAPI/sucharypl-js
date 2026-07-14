@@ -1,5 +1,5 @@
 {
-  "name": "sucharypl",
+  "name": "sucharyjs",
   "version": "0.1.0",
   "description": "Oficjalna biblioteka kliencka JavaScript/TypeScript dla SucharyAPI",
   "main": "./dist/index.js",
