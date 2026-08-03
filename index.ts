@@ -1,6 +1,7 @@
 // Typ zwracanego kawału
 interface Zart {
-    zart: string,
+    id: number,
+    tresc: string,
     kategoria: string
 };
 
@@ -56,7 +57,7 @@ async function dajKawal(kategoria: Kategoria = null): Promise<string> {
             throw new HTTPError(odpowiedz.status, `Serwer zwrócił kod błędu ${odpowiedz.status}: ${odpowiedz.statusText}`)
         }
         const dane = await odpowiedz.json() as Zart;
-        return dane.zart
+        return dane.tresc
     } catch (error: any) {
         clearTimeout(timeoutId);
         if (error.name === "AbortError") {
