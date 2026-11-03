@@ -75,7 +75,6 @@ async function dajKawal(kategoria: Kategoria = null): Promise<string> {
     }
 }
 
-// CHECK REQUIRED
 // Funkcja dająca liczbę kawałów
 async function wieleKawalow(liczba: number): Promise<string[]> {
     let ilosc: string = liczba.toFixed(0)
@@ -93,14 +92,7 @@ async function wieleKawalow(liczba: number): Promise<string[]> {
         }
         const dane = await odpowiedz.json() as Zart[]
 
-        let zarty: string[] = []
-
-        dane.map((c) => {
-            let z = c.tresc
-            zarty.push(z)
-        })
-
-        return zarty
+        return dane.map((c) => c.tresc)
     } catch (error: any) {
         clearTimeout(timeoutId);
         if (error.name === "AbortError") {
@@ -113,7 +105,6 @@ async function wieleKawalow(liczba: number): Promise<string[]> {
     }
 }
 
-// CHECK REQUIRED
 // Funkcja dająca masakrę
 async function masakra(): Promise<string> {
     let adres: string = "https://sucharyapi.onrender.com/masakra"
@@ -159,14 +150,7 @@ async function wieleMasakr(liczba: number) {
         }
         const dane = await odpowiedz.json() as Masakra[]
 
-        let masakry: string[] = []
-
-        dane.map((c) => {
-            let z = c.masakra
-            masakry.push(z)
-        })
-
-        return masakry
+        return dane.map((c) => c.masakra)
     } catch (error: any) {
         clearTimeout(timeoutId);
         if (error.name === "AbortError") {
