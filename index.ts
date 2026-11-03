@@ -113,6 +113,7 @@ async function wieleKawalow(liczba: number): Promise<string[]> {
     }
 }
 
+// CHECK REQUIRED
 // Funkcja dająca masakrę
 async function masakra(): Promise<string> {
     let adres: string = "https://sucharyapi.onrender.com/masakra"
@@ -128,8 +129,55 @@ async function masakra(): Promise<string> {
             throw new HTTPError(odpowiedz.status, `Serwer zwrócił kod błędu ${odpowiedz.status}: ${odpowiedz.statusText}`)
         }
         const dane = await odpowiedz.json() as Masakra;
+        return dane.masakra
+    } catch (error: any) {
+        clearTimeout(timeoutId);
+        if (error.name === "AbortError") {
+            throw new TimeoutError()
+        }
+        if (error instanceof HTTPError) {
+            throw error;
+        }
+        throw new ConnectionError(error.message || "Błąd połączenia z serwerem")
     }
 }
 
-export { dajKawal, wieleKawalow, SucharyError, HTTPError, TimeoutError, ConnectionError };
+// Funkcja dająca liczbę masakr
+async function wieleMasakr(liczba: number) {
+    let ilosc: string = liczba.toFixed(0)
+    let adres: string = `https://sucharyapi.onrender.com/masakra/${ilosc}`
+
+    const kontrolerCzasu = new AbortController();
+    const timeoutId = setTimeout(() => kontrolerCzasu.abort(), 6500)
+
+    try {
+        const odpowiedz = await fetch(adres, {signal: kontrolerCzasu.signal});
+        clearTimeout(timeoutId);
+
+        if (!odpowiedz.ok){
+            throw new HTTPError(odpowiedz.status, `Serwer zwrócił kod błędu ${odpowiedz.status}: ${odpowiedz.statusText}`)
+        }
+        const dane = await odpowiedz.json() as Masakra[]
+
+        let masakry: string[] = []
+
+        dane.map((c) => {
+            let z = c.masakra
+            masakry.push(z)
+        })
+
+        return masakry
+    } catch (error: any) {
+        clearTimeout(timeoutId);
+        if (error.name === "AbortError") {
+            throw new TimeoutError()
+        }
+        if (error instanceof HTTPError) {
+            throw error;
+        }
+        throw new ConnectionError(error.message || "Błąd połączenia z serwerem")
+    }
+}
+
+export { dajKawal, wieleKawalow, masakra, wieleMasakr, SucharyError, HTTPError, TimeoutError, ConnectionError };
 export type { Kategoria };
