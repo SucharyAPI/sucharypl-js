@@ -20,7 +20,7 @@ bun add sucharyjs
 
 ---
 
-## ⚡ Szybki start
+## ⚡ Suchary
 ### Pobranie losowego suchara
 ```javascript
 import { dajKawal } from 'sucharyjs';
@@ -39,9 +39,43 @@ const suchar = await dajKawal({ kategoria: "programowanie" });
 console.log(suchar);
 ```
 
+### Pobranie więcej liczby sucharów
+```javascript
+import { wieleKawalow } from 'sucharyjs';
+
+// Pobierz 3 suchary
+const suchary = await wieleKawalow(3);
+console.log(suchary);
+
+// Funkcja wieleKawalow() zwraca listę (array []) z żartami
+```
+
 ---
 
-## Kategorie
+## Masakry
+### Pobranie masakry
+```javascript
+import { masakra } from 'sucharyjs';
+
+// Pobierz masakrę
+const masakra = await masakra();
+console.log(masakra);
+```
+
+### Pobranie więcej liczby masakr
+```javascript
+import { wieleMasakr } from 'sucharyjs';
+
+// Pobierz 3 masakry
+const masakry = await wieleMasakr(3);
+console.log(masakry);
+
+// Funkcja wieleMasakr() zwraca listę (array []) z masakrami
+```
+
+---
+
+## Kategorie sucharów
 - `"programowanie"` - Suchary o programowaniu
 - `"dwuznaczne"` - Suchary dwuznaczne
 - `"szkolne"` - Suchary szkolne
